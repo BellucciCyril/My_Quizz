@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="col justify-content-center">
+    <h1>Categories</h1>
+    <div class="col col-lg-3 justify-content-center list-group ">
+    
+        {% for categorie in categories %}
+             <a href="{{ path('quizz', {'id': categorie.id}) }}" class="col-sm list-group-item">
+  {{ categorie.name }}
+  </a>
+        {% endfor %} 
+</div>
+</div>
+
+{% endblock %}
+

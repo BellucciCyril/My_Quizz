@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Quizz
+{% endblock %} 
+{% block body %}
+<div class="score">
+      <h1>Score : {{ score }} / {{ count_question }}</h1>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="quizz">
+      <h1 class="title">Quizz : {{ categorie.name }}</h1>
+       <div class="form-group">
+        <h3 class="question"> {{question.question}}</h3>
+        {% if id_question - (categorie.id * 10 ) + 10 < count_question %}
+        <form action="{{ path('quizz_run', { id: categorie.id, id_question: id_question + 1 , score: score }) }}" method="post">
+       {% else %}
+       <form action="{{ path('quizz_end', { id: categorie.id,id_question: id_question, score: score }) }}" method="post">  
+{% endif %}        
+          {% for reponse in reponses %}
+          <div class="form-check">
+           <label class="form-check-label" for="reponse{{ reponse.id }}">
+              <input class="form-check-input" type="radio" name="reponse" id="reponse{{ reponse.id }}" value="{{ reponse.id }}">
+                {{ reponse.reponse }}
+              </label>
+                      </div>
+          {% endfor %}
+          </div>
+          <button type="submit" class="btn btn-primary mt-3">Valider</button>
+    </div>
+  </div>
+  </div>
+  {% endblock %}

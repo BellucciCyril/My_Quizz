@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Quizz : {{categorie.name}} 
+{% endblock %} 
+{% block body %}
+
+    <div class="start_quizz">
+      <h1>{{ categorie.name }}</h1>
+      <a href="{{ path('quizz_run', { id: categorie.id, id_question: question_id, score: score }) }}" class="start_button btn btn-primary btn-lg btn-block">Run le Quizz : {{categorie.name }}</a>
+    </div>
+ 
+  {% endblock %}
+

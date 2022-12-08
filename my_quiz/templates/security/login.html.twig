@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in{% endblock %}
+
+{% block body %}
+
+<section class="vh-100 bg-image"
+  style="background-image: url('https://static.vecteezy.com/system/resources/previews/001/895/642/non_2x/question-mark-on-blue-background-paper-art-style-vector.jpg');">
+  <div class="mask d-flex align-items-center h-100 gradient-custom-3">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-6">
+          <div class="card" style="border-radius: 15px;">
+            <div class="card-body p-5">
+              <h2 class="text-uppercase text-center mb-5">Please sign in</h2>
+                <!-- start code -->
+                <div class="row">
+                    <div class="col">
+                        <form method="post">
+                            {% if error %}
+                                <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                            {% endif %}
+
+                            {% if app.user %}
+                                <div class="mb-3">
+                                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                                </div>
+                            {% endif %}
+
+                            {# <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1> #}
+                            <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                            <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            
+                            <div class="text-center mt-3">
+                                <button class="btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
+                                <a href="{{ path('app_forgot_password_request') }}">your have forget your password<a/>
+                            </div>
+                        </form>
+                    </div>
+                </div>      
+                <!-- end code -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

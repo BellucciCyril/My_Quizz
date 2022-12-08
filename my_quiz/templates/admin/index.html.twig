@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin Pannel{% endblock %}
+
+{% block body %}
+
+<div class="container">
+
+    </h1><strong>Pannel Admin</strong></h1>
+        <br>
+        <h7>Register</h7>
+
+            {{ form_start(registrationFormAdmin) }}
+                {{ form_row(registrationFormAdmin.email) }}
+                {{ form_row(registrationFormAdmin.plainPassword, {
+                    label: 'Password'
+                }) }}
+                {{ form_row(registrationFormAdmin.RGPDConsent) }}
+
+                <button type="submit" class="btn btn-primary btn-lg">Register</button>
+            {{ form_end(registrationFormAdmin) }}
+</div>
+
+{# <div class="container">
+    <h1>Modification Profil :</h1>
+
+        {% for message in app.flashes('message') %}
+            <div class="col-xs4">
+                <div class="p-3 my-2 rounded-2 success"><strong>{{ message }}</strong></div>
+            </div>
+        {% endfor %}
+
+        {{ form_start(form) }}
+
+        {{ form_widget(form) }}
+
+        {{ form_end(form) }}
+
+        <a href="{{path('deleteProfil')}}" class="btn blue">Delete your profil</a>
+</div> #}
+
+{% endblock %}

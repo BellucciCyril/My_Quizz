@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %} 
+{% block title %}Quizz : score 
+{% endblock %} 
+{% block stylesheet %}
+  <link rel="stylesheet" href="{{ asset('assets/css/score_board.css') }}">
+{% endblock %}
+{% block body %}
+<div class="container">
+<div class="score_board">
+{% if score >= 5 %}
+<h1 class="title">Bravo !</h1>
+<img class="images" src="{{ asset('assets/images/200.gif') }}" alt="bravo">
+{% else %}
+<h1 class="title">Perdu !</h1>
+<img class="images" src="{{ asset('assets/images/dommage.gif') }}" alt="perdu">
+{% endif %}
+    <h3 class="title">Vous avez obtenu {{ score }} points sur {{ count_question }} dans le quizz {{categorie.name}}.</h3>
+    <div class="buttons">
+        <a href="{{ path('quizz', {'id': categorie.id}) }}" class="btn btn-primary">Rejouer</a>
+        <a href="{{ path('main') }}" class="btn btn-primary">Retour à l'accueil</a>
+    </div>
+</div>
+{% endblock %}

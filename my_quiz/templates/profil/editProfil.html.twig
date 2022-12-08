@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}EditProfil of {{ app.user.email }}{% endblock %}
+
+{% block body %}
+
+
+    <h1>Modification Profil :</h1>
+
+    {{ form_start(form) }}
+
+    {{ form_widget(form) }}
+
+    {{ form_end(form) }}
+
+{% endblock %}
